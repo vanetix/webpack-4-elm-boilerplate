@@ -1,0 +1,6 @@
+# Since this is a boilerplate, lets ignore it
+package-lock.json
+
+dist/
+elm-stuff/
+node_modules/
