@@ -7,8 +7,7 @@ Basic configuration to get up and running using Elm and Webpack 4.
 - `git clone git@github.com:vanetix/webpack-4-elm-boilerplate.git`
 - `npm install`
 - `npm run develop`
-
-You should now be rocking a hello world application in your browser.
+- _You should now be rocking a hello world application in your browser!_
 
 ## License (MIT)
 
