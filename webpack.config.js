@@ -10,12 +10,12 @@ const paths = {
   dest: resolve(join(__dirname, 'dist'))
 };
 
-module.exports = {
+module.exports = (env, argv) => ({
   entry: join(paths.src, 'index.js'),
 
   output: {
     path: paths.dest,
-    filename: 'js/[name].js'
+    filename: 'js/[name]-[chunkhash].js'
   },
 
   resolve: {
@@ -27,11 +27,10 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin('css/[name].css'),
+    new ExtractTextPlugin('css/[name]-[chunkhash].css'),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'Boilerplate',
-      template: join(paths.src, 'index.html')
+      title: 'Boilerplate'
     })
   ],
 
@@ -39,11 +38,10 @@ module.exports = {
     rules: [
       {
         test: /\.elm$/,
-        use: [
-          {
-            loader: 'elm-webpack-loader'
-          }
-        ]
+        loader: 'elm-webpack-loader',
+        options: {
+          debug: argv['mode'] === 'development'
+        }
       },
       {
         test: /\.js$/,
@@ -105,4 +103,4 @@ module.exports = {
       }
     ]
   }
-};
+});
